@@ -1,0 +1,11 @@
+.picture-container
+{
+    display: flex;
+    height: 101%;
+}
+
+.picture
+{
+    height: 100%;
+    width: auto;
+}

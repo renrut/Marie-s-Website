@@ -1,0 +1,76 @@
+.nav-link-container
+{
+}
+
+.nav-bar {
+    display: flex;
+    flex-flow: row nowrap;
+    background-color:#455A64;
+    min-height: 7%;
+    flex-basis: 100%;
+    font-family: 'Titillium Web', sans-serif;
+    justify-content: space-between;
+
+}
+
+.nav-brand
+{
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 12px 10px;
+    font-size: 1.7em;
+    font-family: 'Dancing Script', cursive;
+}
+
+.nav-link-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+}
+
+.nav-item
+{
+    justify-content: flex-end;
+    display: block;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.1em;
+    padding: 18px 12px;
+}
+
+.active-nav {
+    background-color: #607D8B;
+    padding: 30px 12px;
+}
+
+/* Medium screens */
+@media all and (max-width: 800px) {
+    .nav-bar {
+        justify-content: center;
+
+    }
+    .nav-link-container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    .nav-item{
+        justify-content: center;
+    }
+    .active-nav{
+        background-color: #607D8B !important;
+        padding: 18px 12px;
+    }
+}
+
+/* Small screens */
+@media all and (max-width: 500px) {
+    .nav-bar {
+        /* On small screens, we are no longer using row direction but column */
+        flex-direction: column;
+    }
+    .nav-item{
+
+    }
+}
+

@@ -1,0 +1,49 @@
+.page-body
+{
+    display: flex;
+    height: 93%;
+    background-color: #7CA1B9;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+
+}
+.home-page{
+    margin-top: 10vh;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.home-title-container
+{
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
+    color: #FFFFFF;
+}
+
+.home-text-container
+{
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: lighter;
+    font-size: .6em;
+    line-height: 4em;
+    color: #FFFFFF;
+    padding: 5% 13%;
+    text-align: justify;
+}
+
+.underline
+{
+    background-color: #FFFFFF;
+    height: 2px;
+    margin: -50px 14% -20px;
+}
+
+.particles-container{
+    position: absolute;
+    height: 100%;
+    width:100%;
+}
+
