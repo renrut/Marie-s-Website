@@ -6,7 +6,10 @@ class BlogPage extends Component {
     {
         super(props);
         this.state = {
+            title:"",
+            text:""
         }
+        this.fillBlogPost = this.fillBlogPost.bind(this);
     }
 
     getMostRecentBlogPost(){
@@ -14,7 +17,25 @@ class BlogPage extends Component {
     }
 
     componentDidMount(){
+        let postNum = 1;
+        this.pospulateBlogPost(postNum);
     }
+
+    pospulateBlogPost(postNum)
+    {
+        let self = this;
+        fetch("/v1/post", {accept: 'application/json'}).then(function(response) {
+            return response.json();
+        }).then(function(myJson) {
+            self.fillBlogPost(myJson);
+        });
+    }
+
+    fillBlogPost(blogData)
+    {
+        this.setState({title:blogData.postTitle, text:blogData.postText});
+    }
+
 
     render() {
         return (
