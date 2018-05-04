@@ -24,7 +24,7 @@ class BlogPage extends Component {
     pospulateBlogPost(postNum)
     {
         let self = this;
-        fetch("/v1/post", {accept: 'application/json'}).then(function(response) {
+        fetch("/v1/post/1", {accept: 'application/json'}).then(function(response) {
             return response.json();
         }).then(function(myJson) {
             self.fillBlogPost(myJson);
