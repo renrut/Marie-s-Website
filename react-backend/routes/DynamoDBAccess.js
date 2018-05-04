@@ -1,7 +1,7 @@
 var AWS = require('aws-sdk');
-const ddb = new AWS.DynamoDB.DocumentClient({ region: 'us-west-2' });
+const ddb = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-08-10', region: 'us-west-2' });
 
-let TABLE_NAME = 'marie_blog';
+let TABLE_NAME = 'maries_blog';
 
 class DynamoDBAccess{
 
@@ -18,9 +18,7 @@ class DynamoDBAccess{
         // Create the DynamoDB service object
         var params = {
             TableName: TABLE_NAME,
-            Key: {
-                S:{postId: "1"}
-            }
+            Key:{postId: "1d"}
         };
 
         // Call DynamoDB to read the item from the table
