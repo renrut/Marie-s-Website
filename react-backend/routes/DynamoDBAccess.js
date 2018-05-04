@@ -5,12 +5,9 @@ let TABLE_NAME = 'maries_blog';
 
 class DynamoDBAccess{
 
-
-
-    getPost(postId){
-        console.log("Calling "+TABLE_NAME);
+    getPost(postId, cb){
         if(postId === null){
-            postId = 1;
+            postId = "1d";
         }
         // Load the AWS SDK for Node.js
         // Set the region
@@ -18,7 +15,7 @@ class DynamoDBAccess{
         // Create the DynamoDB service object
         var params = {
             TableName: TABLE_NAME,
-            Key:{postId: "1d"}
+            Key:{postId: postId}
         };
 
         // Call DynamoDB to read the item from the table
@@ -26,11 +23,12 @@ class DynamoDBAccess{
             if (err) {
                 console.log("Error", err);
             } else {
-                console.log("Success", data.Item);
+                console.log("Success");
+                cb(data);
             }
         });
-        console.log("Calling ddb");
     }
+
 }
 
 module.exports = DynamoDBAccess;

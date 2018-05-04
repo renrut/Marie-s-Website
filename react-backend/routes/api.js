@@ -7,15 +7,22 @@ router.get('/post/:postId', function(req, res, next) {
     let postId = req.params.postId;
     console.log("Called /post");
     let ddbAccess = new DynamoDBAccess();
-    if(postId){
-        ddbAccess.getPost(postId);
-    }else{
-        ddbAccess.getPost(null);
+    let post = null;
+
+    if(!postId){
+        postId = "1d"
     }
-    console.log("Called /post/" + req.params.postId)
-    let testSend = {test:"testObject"+req.params.postId};
-    res.send(testSend);
+
+    let cb = returnPost.bind(null, res);
+    ddbAccess.getPost(postId, cb);
+
 });
+
+let returnPost = function(res, data)
+{
+    console.log(res)
+    res.send(data.Item);
+}
 
 // /* POST users listing. */
 // router.get('/post', function(req, res, next) {
