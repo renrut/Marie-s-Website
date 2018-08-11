@@ -13,7 +13,6 @@ class Picture extends Component {
 
     }
 
-
     render() {
         return (
             <div className="picture-container">

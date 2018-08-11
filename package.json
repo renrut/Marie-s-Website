@@ -9,12 +9,14 @@
     "morgan": "^1.9.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-markdown": "^3.4.1",
     "react-particles-js": "^2.1.2",
     "react-router": "^4.2.0",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "start": "concurrently 'react-scripts start' 'cd react-backend && npm start'",
+    "start": "concurrently 'react-scripts start' 'cd react-backend && npm start --ignore app'",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

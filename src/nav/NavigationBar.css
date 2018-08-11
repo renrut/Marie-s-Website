@@ -41,6 +41,9 @@
 .active-nav {
     background-color: #607D8B;
     padding: 30px 12px;
+    /*keep in front*/
+    z-index: 100;
+    position: relative;
 }
 
 /* Medium screens */

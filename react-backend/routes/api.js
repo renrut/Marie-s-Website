@@ -1,37 +1,96 @@
-var express = require('express');
-var router = express.Router();
-var DynamoDBAccess = require('./DynamoDBAccess');
+let express = require('express');
+let router = express.Router();
+let DynamoDBAccess = require('./dao/DynamoDBAccess');
 
-/* GET users listing. */
-router.get('/post/:postId', function(req, res, next) {
+/* GET blog. */
+router.get('/post/:postId*?', function(req, res, ) {
+    console.log("Called Get /post");
     let postId = req.params.postId;
-    console.log("Called /post");
-    let ddbAccess = new DynamoDBAccess();
-    let post = null;
+    getPublishedPost(postId, res);
+});
 
-    if(!postId){
-        postId = "1d"
-    }
-
-    let cb = returnPost.bind(null, res);
-    ddbAccess.getPost(postId, cb);
+/* POST blog. */
+router.post('/post/:postId*?', function(req, res, ) {
+    console.log("Called Post /post with id " + req.params.postId);
+    //generatePost
+    let postId = req.params.postId;
+    savePost(postId, req.body, res);
 
 });
 
-let returnPost = function(res, data)
+//TODO: Move into blog helper class
+let getPublishedPost = function(postId, res)
 {
-    console.log(res)
-    res.send(data.Item);
+    let ddbAccess = new DynamoDBAccess();
+    let cb = returnPost.bind(null, res);
+
+    if(!postId)
+    {
+        console.log("No id provided. Getting most recent published post.");
+        ddbAccess.getRecentPublishedPost(cb);
+    }
+    else
+    {
+        console.log("Getting post with id " + postId);
+        ddbAccess.getPost(postId, false, cb);
+    }
 }
 
-// /* POST users listing. */
-// router.get('/post', function(req, res, next) {
-//     console.log("Called /post");
-//     let testSend = {
-//         postTitle:"Post Title",
-//         postText:"Lorem ipsum dolor sit amet, etiam viderer nec ea. Duo ne solet inciderint. Mei agam velit elaboraret no, te modus vivendum vis. Qui no everti aliquando, duis iudico apeirian te pro. Vis ei suas cetero persecuti.\n"
-//     };
-//     res.send(testSend);
-// });
+let savePost = function(postId, body, res)
+{
+    console.log("\nBlog To Save");
+    console.log(body);
+    let ddbAccess = new DynamoDBAccess();
+
+    let saveData = function (generatedPostId) {
+        let date = new Date().toISOString();
+
+        let newPost = {
+            postId: generatedPostId.toString(),
+            isPublished: body.publish,
+            postTags: {},
+            postDate:date,
+            postText:body.postText,
+            postTitle:body.postTitle,
+        };
+        console.log("\nSaving...");
+        console.log(newPost);
+        ddbAccess.savePost(newPost, function (err, data) {
+            if(err)
+            {
+                res.status(err.statusCode).send(err.message);
+            }else{
+                res.sendStatus(200);
+            }
+        });
+    };
+
+    if(!postId)
+    {
+        console.log("\nNo id provided. Generating post id.");
+        //this could technically cause a race condition,
+        // but not too worried since I only expect one poster.
+        ddbAccess.getRecentPost(function (data) {
+            let generatedPostId = parseInt(data.postId) + 1;
+            saveData(generatedPostId)
+        });
+    }
+    else
+    {
+        console.log("Saving post with id " + postId);
+        saveData(postId)
+    }
+}
+
+
+let returnPost = function(res, data)
+{
+    console.log(data);
+    if(data){
+        res.send(data);
+    }else{
+        res.sendStatus(404);
+    }
+}
 
 module.exports = router;

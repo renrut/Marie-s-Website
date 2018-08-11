@@ -1,0 +1,10 @@
+.side-bar
+{
+    background-color: #424242;
+    opacity: .8;
+    height: 15px;
+    width: 100%;
+    min-height: 100%;
+    float: top;
+    z-index: 100;
+}

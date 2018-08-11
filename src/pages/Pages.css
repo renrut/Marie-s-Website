@@ -21,6 +21,8 @@
     font-family: 'Dancing Script', cursive;
     font-size: 2.5em;
     color: #FFFFFF;
+    padding: 5% 0;
+    text-align: center;
 }
 
 .home-text-container
@@ -31,7 +33,21 @@
     line-height: 4em;
     color: #FFFFFF;
     padding: 5% 13%;
-    text-align: justify;
+    /*text-align: justify;*/
+
+}
+
+.blog-page
+{
+    overflow-y: auto;
+}
+
+
+.media-page
+{
+    /*keep it dark for media*/
+    background-color: #424242;
+    height: 100%;
 }
 
 .underline
@@ -47,3 +63,58 @@
     width:100%;
 }
 
+.blog-post-page
+{
+    position: relative;
+}
+
+.post-form
+{
+    margin: 2em auto;
+    display: table;
+    width: 80%;
+}
+
+.post-elements
+{
+    padding-top: 10px;
+}
+.title-input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+.post-input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    height: 40em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+.post-buttons
+{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.post-button
+{
+    float: right;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #008CBA;
+    border-radius: 3px;
+}
