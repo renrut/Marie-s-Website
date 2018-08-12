@@ -20,7 +20,6 @@ class BlogPage extends Component
     componentDidMount()
     {
         let postId = this.props.match.params.blogId !== undefined ? this.props.match.params.blogId : "";
-        console.log(postId);
         this.populateBlogPost(postId);
     }
 
@@ -32,8 +31,14 @@ class BlogPage extends Component
                 return response.json();
             }
             return {postTitle:"Sorry! This blog post could not be found!", postText:""};
-        }).then(function(myJson) {
-            self.fillBlogPost(myJson);
+        }).then(function(data) {
+            if(postNum)
+            {
+                self.fillBlogPost(data);
+            }else{
+                window.location.pathname = '/blog/' + data.postId;
+                self.fillBlogPost(data);
+            }
         });
     }
 

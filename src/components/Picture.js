@@ -10,7 +10,6 @@ class Picture extends Component {
             {
                 picture:this.props.picture
             }
-
     }
 
     render() {

@@ -15,7 +15,6 @@ router.post('/post/:postId*?', function(req, res, ) {
     //generatePost
     let postId = req.params.postId;
     savePost(postId, req.body, res);
-
 });
 
 //TODO: Move into blog helper class
@@ -34,7 +33,7 @@ let getPublishedPost = function(postId, res)
         console.log("Getting post with id " + postId);
         ddbAccess.getPost(postId, false, cb);
     }
-}
+};
 
 let savePost = function(postId, body, res)
 {
@@ -42,11 +41,11 @@ let savePost = function(postId, body, res)
     console.log(body);
     let ddbAccess = new DynamoDBAccess();
 
-    let saveData = function (generatedPostId) {
+    let saveData = function (uniqueId) {
         let date = new Date().toISOString();
 
         let newPost = {
-            postId: generatedPostId.toString(),
+            postId: uniqueId.toString(),
             isPublished: body.publish,
             postTags: {},
             postDate:date,
@@ -60,7 +59,7 @@ let savePost = function(postId, body, res)
             {
                 res.status(err.statusCode).send(err.message);
             }else{
-                res.sendStatus(200);
+                res.status(200).send(newPost.postId);
             }
         });
     };
