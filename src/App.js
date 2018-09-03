@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import NavigationBar from './nav/NavigationBar';
 import Picture from './components/Picture';
-import Sidebar from './components/Sidebar';
 import PageFactory from "./pages/PageFactory";
 import {BrowserRouter, Route} from 'react-router-dom'
-
 import './App.css';
 
 class App extends Component
@@ -36,7 +34,7 @@ class App extends Component
         return (
                 <div className="App">
                     <div className="side-app">
-                        <Picture picture={"./img/climbing.png"}/>
+                        <Picture picture={"/img/climbing.png"}/>
                     </div>
                     <BrowserRouter>
                     <div className="body-app">

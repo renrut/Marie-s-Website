@@ -20,7 +20,7 @@ class HomePage extends Component {
     render() {
         return (
             <div className="media-page">
-
+                <h1 className="coming-soon-title">{"Coming Soon"}</h1>
             </div>
         );
     }

@@ -36,7 +36,7 @@ class BlogPage extends Component
             {
                 self.fillBlogPost(data);
             }else{
-                window.location.pathname = '/blog/' + data.postId;
+                window.history.pushState(null, "", '/blog/' + data.postId);
                 self.fillBlogPost(data);
             }
         });

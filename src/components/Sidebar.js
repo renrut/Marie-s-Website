@@ -7,7 +7,8 @@ class Sidebar extends Component {
     {
         super(props);
         this.state = {
-            id:this.props.id
+            id:this.props.id,
+            expanded: false
         }
 
         this.numberOfPostsToRetrieve = 15;
@@ -23,13 +24,32 @@ class Sidebar extends Component {
 
     expand()
     {
-
+        let dropDown = document.getElementById(this.props.id)
+        let dropDownList = document.getElementById("blog-post-list-" + this.props.id)
+        console.log(dropDownList);
+        if(this.state.expanded)
+        {
+            dropDown.classList.remove("side-bar-expand");
+            dropDownList.setAttribute("hidden", true);
+        }else{
+            dropDown.classList.add("side-bar-expand");
+            dropDownList.removeAttribute("hidden");
+        }
+        this.state.expanded = !this.state.expanded;
     }
 
     render() {
+        let expand = this.expand.bind(this);
         return (
             <div id={this.props.id} className="side-bar">
-                <img className="picture" src={this.state.picture} alt=""/>
+                <div id={"blog-post-list-" + this.props.id} className={"blog-post-list"} hidden>
+                    <ul>
+                        <li><a href={"/blog/4"}>Post 4</a></li>
+                        <li><a href={"/blog/5"}>Post 5</a></li>
+                        <li><a href={"/blog/6"}>Post 6</a></li>
+                    </ul>
+                </div>
+                <div className={"dropdown-button"} onClick={expand}> </div>
             </div>
         );
     }

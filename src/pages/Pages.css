@@ -18,7 +18,7 @@
 
 .home-title-container
 {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Amatic SC', cursive;
     font-size: 2.5em;
     color: #FFFFFF;
     padding: 5% 0;
@@ -30,7 +30,7 @@
     font-family: 'Titillium Web', sans-serif;
     font-weight: lighter;
     font-size: .6em;
-    line-height: 4em;
+    line-height: 3em;
     color: #FFFFFF;
     padding: 5% 13%;
     /*text-align: justify;*/
@@ -48,6 +48,13 @@
     /*keep it dark for media*/
     background-color: #424242;
     height: 100%;
+}
+
+.coming-soon-title
+{
+    text-align: center;
+    font-family: 'Amatic SC', sans-serif;
+    color: white;
 }
 
 .underline

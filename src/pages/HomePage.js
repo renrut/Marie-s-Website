@@ -10,7 +10,7 @@ class HomePage extends Component {
         super(props);
         this.state = {
             title: "Marie Armbruster",
-            text: "Marie Armbruster ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero et diam vestibulum ullamcorper. Nulla pellentesque eget arcu vitae consequat. Praesent imperdiet venenatis nisi, id bibendum lectus fringilla quis. Donec neque nisi, vulputate nec tellus in, auctor maximus est. Etiam at convallis enim. Etiam vel condimentum ex. Maecenas quis ligula sed."
+            text: "Marie Armbruster Lorem ipsum dolor amet swag roof party raclette, vexillologist banh mi offal leggings plaid microdosing coloring book hexagon. Cornhole literally typewriter, pop-up gluten-free butcher PBR&B mlkshk next level. Green juice shoreditch hot chicken farm-to-table."
         }
     }
 

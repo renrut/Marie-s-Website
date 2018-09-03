@@ -7,4 +7,29 @@
     min-height: 100%;
     float: top;
     z-index: 100;
+    overflow: hidden;
+}
+
+.dropdown-button
+{
+    background-color: #9E9E9E;
+    width: 50px;
+    height: 9px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+}
+
+.dropdown-button:hover
+{
+    width: 55px;
+    height: 11px;
+    margin-top: 2px;
+}
+
+.side-bar-expand
+{
+    height: 200px;
+    position: relative;
 }

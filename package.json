@@ -6,8 +6,12 @@
   "dependencies": {
     "aws-sdk": "^2.231.1",
     "express": "^4.16.3",
+    "md5": "^2.2.1",
     "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "react": "^16.3.2",
+    "react-bootstrap": "^0.32.3",
     "react-dom": "^16.3.2",
     "react-markdown": "^3.4.1",
     "react-particles-js": "^2.1.2",

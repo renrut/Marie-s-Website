@@ -15,7 +15,6 @@ class DynamoDBAccess
      * @param callback
      */
     getPost(postId, returnUnpublished, callback){
-        // Create the DynamoDB service object
         let params = {
             TableName: TABLE_NAME,
             Key:{postId: postId}
@@ -26,8 +25,12 @@ class DynamoDBAccess
             if (err) {
                 console.log("Error", err);
             } else {
-                console.log("Success");
-                callback(data.Item);
+                if(data.Item.isPublished || returnUnpublished)
+                {
+                    callback(data.Item);
+                }else {
+                    callback(null);
+                }
             }
         });
     }
