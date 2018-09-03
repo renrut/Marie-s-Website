@@ -48,17 +48,9 @@ router.post('/post/:postId*?', function(req, res, ) {
     savePost(postId, req.body, res);
 });
 
-router.post('/login', function(req, res) {
-    let userAccess = new UserAccess();
-
-    let body = req.body;
-    let username = body.username;
-    let password = body.password;
-    let cb = function (isValid) {
-        console.log(isValid);
-    };
-    userAccess.authenticateUser(username, password, cb);
-});
+router.post('/login', passport.authenticate('local', { successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true }));
 
 
 

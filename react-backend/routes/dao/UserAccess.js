@@ -7,12 +7,6 @@ const TABLE_NAME = 'maries_blog_users';
 
 class UserAccess
 {
-
-    createUser(ddbItem)
-    {
-        return new User(ddbItem.username, ddbItem.password);
-    }
-
     /**
      * Gets a post by it's ID, Passes data to callback.
      * @param postId
@@ -30,7 +24,8 @@ class UserAccess
                 console.log("Error", err);
                 callback(err,null);
             } else {
-                let user = this.createUser(data.Item)
+                let ddbItem = data.Item;
+                let user = new User(ddbItem.username, ddbItem.password);
                 callback(null, user);
             }
         });
